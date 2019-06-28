@@ -10,23 +10,48 @@ import SwiftUI
 
 internal struct SessionCard : View
 {
+    ///
+    @ObjectBinding private var imageLoader = imageLoader
+    ///
+    private sessionDetails: Session
+
     var body: some View
     {
-        VStack
+        VStack(alignment: .leading)
         {
             Image("")
+                .renderingMode(.original)
                 .resizable()
                 .cornerRadius(6)
-                .shadow(radius: 12)
+                .shadow(radius: 8)
                 .frame(height: 150)
             
             Text("macOS")
                 .font(.footnote)
+                .fontWeight(.regular)
                 .foregroundColor(.secondary)
+                .padding(EdgeInsets(top: 8, leading: 8, bottom: 4, trailing: 8))
             
-            Text("")
+            Text("Session name")
                 .fontWeight(.bold)
+                .foregroundColor(.primary)
+                .padding(EdgeInsets(top: 0, leading: 8, bottom: 4, trailing: 8))
         }
+        .frame(width: 270, height: 350, alignment: .leading)
+        .padding(8)
+        .onAppear() {
+            self.imageLoader.requestImage()
+        }
+    }
+
+    /**
+
+    */
+    internal init(for session: Session)
+    {
+        self.sessionDetails = session
+
+        self.imageLoader = imageLoader(for: self.sessionDetails.)
     }
 }
 

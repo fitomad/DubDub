@@ -10,6 +10,9 @@ import SwiftUI
 
 internal struct CollectionSection : View
 {
+    ///
+    internal private(set) collectionDetails: Collection
+
     var body: some View
     {
         VStack
@@ -18,14 +21,22 @@ internal struct CollectionSection : View
                 .font(.title)
                 .fontWeight(.bold)
                 .foregroundColor(.primary)
+                .padding([ .leading, .trailing], 32)
+                .padding(.top, 24)
             
-            ScrollView
+            ScrollView(showsHorizontalIndicator: false)
             {
                 HStack
                 {
-                    ForEach(0...10) { _ in
-                        Text("Video")
+                    Spacer()
+                        .frame(width: 16)
+
+                    ForEach(collectionDetails.sessions) { session in
+                        SessionCard(sessionDetails: session)
                     }
+
+                    Spacer()
+                        .frame(width: 16)
                 }
             }
         }

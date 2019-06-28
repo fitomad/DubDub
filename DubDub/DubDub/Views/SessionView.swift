@@ -10,9 +10,50 @@ import SwiftUI
 
 internal struct SessionView : View
 {
+    ///
+    @ObjectBinding private var imageLoader: ImageLoader
+
     var body: some View
     {
-        Text(/*@START_MENU_TOKEN@*/"Hello World!"/*@END_MENU_TOKEN@*/)
+        VStack
+        {
+            Image("")
+                .resisable()
+                .aspectToFit()
+                .cornerRadius(6)
+                .shadow(radius: 8)
+                .frame(height: 150)
+
+            Text("operationg systems")
+                .font(.footnote)
+                .foregroundColor(.secondary)
+
+            Text("Session name")
+                .font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(.primary)
+
+            Text("Overview")
+                .font(.system(size: 22, weight: .bold))
+            
+            Text("sadfasdfd")
+                .lineLimit(nil)
+                .lineHeight(1.5)
+
+            Button(action: )
+        }
+        .onAppear() {
+            self.imageLoader.requestImage()
+        }
+    }
+
+    /**
+
+    */
+    internal init(for session: Session)
+    {
+        self.sessionModel = SessionViewModel(for: session)
+        self.imageLoader = ImageLoader()
     }
 }
 

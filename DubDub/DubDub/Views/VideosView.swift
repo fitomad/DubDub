@@ -10,19 +10,36 @@ import SwiftUI
 
 internal struct VideosView : View
 {
+    ///
+    @ObjectBinding private var collectionList: VideosViewModel()
+
     var body: some View
     {
-        
-        Form
+        List
         {
-            Section
-            {
-            List
-            {
-                Text("Op 1")
-                Text("Op 2")
+            NavigationButton(destination: LandmarkList()) {
+                Text("Favoritos")
+                    .fontWeight(.semibold)
+                    .foregroundColor(.accentColor)
             }
+
+            NavigationButton(destination: LandmarkList()) {
+                Text("Todos los vídeos")
+                    .fontWeight(.semibold)
+                    .foregroundColor(.accentColor)
             }
+
+            NavigationButton(destination: LandmarkList()) {
+                Text("Todos los vídeos")
+                    .fontWeight(.semibold)
+                    .foregroundColor(.accentColor)
+            }
+
+            // Colecciones
+            ForEach(collectionList.collections) { collection in 
+                CollectionSection(collectionDetails: collection)
+            }
+            .listRowInsets(EdgeInsets())
         }
     }
 }
