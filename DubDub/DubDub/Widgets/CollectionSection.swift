@@ -8,16 +8,21 @@
 
 import SwiftUI
 
+import CoreWWDC
+import DubDubKit
+
 internal struct CollectionSection : View
 {
     ///
-    internal private(set) collectionDetails: Collection
+    @ObjectBinding private var collectionSessions: CollectionViewModel
+    ///
+    internal var collectionDetails: SpecialCollection
 
     var body: some View
     {
-        VStack
+        VStack(alignment: .leading)
         {
-            Text("Section Name")
+            Text(collectionDetails.name)
                 .font(.title)
                 .fontWeight(.bold)
                 .foregroundColor(.primary)
@@ -30,23 +35,35 @@ internal struct CollectionSection : View
                 {
                     Spacer()
                         .frame(width: 16)
-
-                    ForEach(collectionDetails.sessions) { session in
-                        SessionCard(sessionDetails: session)
+ 
+                    ForEach(self.collectionSessions.sessions) { session in
+                        NavigationButton(destination: SessionView(for: session))
+                        {
+                            SessionCard(for: session)
+                        }
                     }
-
+    
                     Spacer()
                         .frame(width: 16)
                 }
             }
+            .frame(height: 280)
         }
+        
+    }
+    
+    internal init(collectionDetails: SpecialCollection)
+    {
+        self.collectionDetails = collectionDetails
+        self.collectionSessions = CollectionViewModel(sessionsTitled: collectionDetails.sessionTitles)
     }
 }
 
 #if DEBUG
 struct CollectionSection_Previews : PreviewProvider {
     static var previews: some View {
-        CollectionSection()
+        //CollectionSection()
+        Text("")
     }
 }
 #endif

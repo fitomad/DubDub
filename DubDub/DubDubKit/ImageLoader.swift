@@ -34,13 +34,13 @@ public class ImageLoader: BindableObject
     /// La `NSImage` a partir de los datos recibidos
     public var image: NSImage?
     {
-        return NSImage(data: self.data)
+        return NSImage(data: self.imageData)
     }
     #else
     /// La `UIImage` a partir de los datos recibidos
     public var image: UIImage?
     {
-        guard let data = self.data else
+        guard let data = self.imageData else
         {
             return nil
         }
@@ -52,13 +52,14 @@ public class ImageLoader: BindableObject
     // MARK: - Bindable Object Protocol -
 
     /// Informamos de los cambios a la vista.
-    public var didChange = PassthroughtSubject<Void, Never>()
+    public var didChange = PassthroughSubject<Void, Never>()
 
     /**
 
     */
     public init(from url: URL)
     {
+        print(url)
         self.imageURL = url
     }
 
@@ -68,8 +69,11 @@ public class ImageLoader: BindableObject
 
     public func requestImage() -> Void
     {
-        let imageTask = URLSession.shared.dataTask(with: self.imageURL) { (data: Data?, response: URLResponse?, error: Error?) -> Void 
-            self.data = data
+        let imageTask = URLSession.shared.dataTask(with: self.imageURL) { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+            DispatchQueue.main.async
+            {
+                self.imageData = data
+            }
         }
 
         imageTask.resume()

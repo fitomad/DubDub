@@ -8,57 +8,58 @@
 
 import SwiftUI
 
+import DubDubKit
+import CoreWWDC
+
 internal struct SessionCard : View
 {
     ///
-    @ObjectBinding private var imageLoader = imageLoader
+    @ObjectBinding private var imageLoader: ImageLoader
     ///
-    private sessionDetails: Session
+    internal var session: Session
 
     var body: some View
     {
         VStack(alignment: .leading)
         {
-            Image("")
+            Image(uiImage: self.imageLoader.image ?? UIImage(named: "EmptyImage")!)
                 .renderingMode(.original)
                 .resizable()
                 .cornerRadius(6)
                 .shadow(radius: 8)
                 .frame(height: 150)
             
-            Text("macOS")
+            Text(session.platforms.map({ $0.rawValue }).joined(separator: ", "))
                 .font(.footnote)
                 .fontWeight(.regular)
                 .foregroundColor(.secondary)
                 .padding(EdgeInsets(top: 8, leading: 8, bottom: 4, trailing: 8))
             
-            Text("Session name")
+            Text(session.title)
                 .fontWeight(.bold)
                 .foregroundColor(.primary)
                 .padding(EdgeInsets(top: 0, leading: 8, bottom: 4, trailing: 8))
         }
-        .frame(width: 270, height: 350, alignment: .leading)
         .padding(8)
-        .onAppear() {
+        .frame(width: 270, height: 260, alignment: .leading)
+        .onAppear()
+        {
             self.imageLoader.requestImage()
         }
     }
-
-    /**
-
-    */
+    
     internal init(for session: Session)
     {
-        self.sessionDetails = session
-
-        self.imageLoader = imageLoader(for: self.sessionDetails.)
+        self.session = session
+        self.imageLoader = ImageLoader(from: session.imageURL)
     }
 }
 
 #if DEBUG
 struct VideoCard_Previews : PreviewProvider {
     static var previews: some View {
-        SessionCard()
+        //SessionCard(for: )
+        Text("")
     }
 }
 #endif

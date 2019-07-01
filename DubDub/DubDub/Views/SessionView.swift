@@ -8,43 +8,70 @@
 
 import SwiftUI
 
+import DubDubKit
+import CoreWWDC
+
 internal struct SessionView : View
 {
     ///
     @ObjectBinding private var imageLoader: ImageLoader
+    
+    private var session: Session
 
     var body: some View
     {
-        VStack
+        VStack(alignment: .leading)
         {
-            Image("")
-                .resisable()
-                .aspectToFit()
+            Image(uiImage: self.imageLoader.image ?? UIImage(named: "EmptyImage")!)
+                .resizable()
                 .cornerRadius(6)
                 .shadow(radius: 8)
-                .frame(height: 150)
+                .frame(height: 200)
+                .padding(.bottom, 24)
 
-            Text("operationg systems")
+            Text(self.session.platforms.map({ $0.rawValue }).joined(separator: ", "))
                 .font(.footnote)
                 .foregroundColor(.secondary)
-
-            Text("Session name")
+ 
+            Text(session.title)
                 .font(.title)
                 .fontWeight(.bold)
                 .foregroundColor(.primary)
-
-            Text("Overview")
-                .font(.system(size: 22, weight: .bold))
+                .lineLimit(3)
+                .padding([.top, .bottom], 12)
             
-            Text("sadfasdfd")
-                .lineLimit(nil)
-                .lineHeight(1.5)
+            Button(action: self.handleFavoriteButtonTap) {
+                Text("Marcar como favorita")
+                    .font(.callout)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.white)
+                    .frame(minWidth: 0, maxWidth: .infinity)
+            }
+            .frame(height: 50)
+            .background(Color.accentColor)
+            .cornerRadius(6)
+            .shadow(radius: 4)
+            .padding([.top, .bottom], 24)
 
-            Button(action: )
+            Text("Resumen")
+                .font(.system(size: 22))
+                .fontWeight(.bold)
+            
+            Text(session.overview)
+                .font(.body)
+                .lineLimit(nil)
+                .lineSpacing(7)
+                .padding(.top, 12)
+            
         }
-        .onAppear() {
+        .padding([.leading, .trailing], 24)
+        .onAppear()
+        {
             self.imageLoader.requestImage()
         }
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+    
+        
     }
 
     /**
@@ -52,15 +79,21 @@ internal struct SessionView : View
     */
     internal init(for session: Session)
     {
-        self.sessionModel = SessionViewModel(for: session)
-        self.imageLoader = ImageLoader()
+        self.session = session
+        self.imageLoader = ImageLoader(from: session.imageURL)
+    }
+    
+    private func handleFavoriteButtonTap() -> Void
+    {
+        
     }
 }
 
 #if DEBUG
 struct SessionView_Previews : PreviewProvider {
     static var previews: some View {
-        SessionView()
+        //SessionView()
+        Text("")
     }
 }
 #endif
