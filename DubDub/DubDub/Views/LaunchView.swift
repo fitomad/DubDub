@@ -12,7 +12,7 @@ internal struct LaunchView : View
 {
     var body: some View
     {
-        Text("Hello World")
+        Image("Launch")
     }
 }
 
