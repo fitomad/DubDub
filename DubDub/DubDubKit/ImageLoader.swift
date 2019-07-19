@@ -24,9 +24,9 @@ public class ImageLoader: BindableObject
     /// Las colecciones disponibles en este momento.
     public private(set) var imageData: Data?
     {
-        didSet
+        willSet
         {
-            self.didChange.send()
+            self.willChange.send()
         }
     }
 
@@ -52,14 +52,13 @@ public class ImageLoader: BindableObject
     // MARK: - Bindable Object Protocol -
 
     /// Informamos de los cambios a la vista.
-    public var didChange = PassthroughSubject<Void, Never>()
+    public var willChange = PassthroughSubject<Void, Never>()
 
     /**
 
     */
     public init(from url: URL)
     {
-        print(url)
         self.imageURL = url
     }
 

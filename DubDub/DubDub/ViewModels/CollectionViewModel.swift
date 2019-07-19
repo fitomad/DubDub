@@ -20,16 +20,16 @@ internal class CollectionViewModel: BindableObject
     /// Las colecciones disponibles en este momento.
     public private(set) var sessions: [Session]
     {
-        didSet
+        willSet
         {
-            self.didChange.send()
+            self.willChange.send()
         }
     }
     
     // MARK: - Bindable Object Protocol -
     
     /// Informamos de los cambios a la vista.
-    public var didChange = PassthroughSubject<Void, Never>()
+    public var willChange = PassthroughSubject<Void, Never>()
 
     /**
      

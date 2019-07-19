@@ -20,16 +20,19 @@ internal struct CollectionSection : View
 
     var body: some View
     {
-        VStack(alignment: .leading)
+        VStack(alignment: HorizontalAlignment.leading)
         {
-            Text(collectionDetails.name)
-                .font(.title)
-                .fontWeight(.bold)
-                .foregroundColor(.primary)
-                .padding([ .leading, .trailing], 32)
-                .padding(.top, 24)
+            HStack(alignment: .center)
+            {
+                Text(collectionDetails.name)
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundColor(.primary)
+                    .padding([ .leading, .trailing], 32)
+                    .padding(.top, 24)
+            }
             
-            ScrollView(showsHorizontalIndicator: false)
+            ScrollView([ .horizontal ], showsIndicators: false)
             {
                 HStack
                 {
@@ -37,7 +40,7 @@ internal struct CollectionSection : View
                         .frame(width: 16)
  
                     ForEach(self.collectionSessions.sessions) { session in
-                        NavigationButton(destination: SessionView(for: session))
+                        NavigationLink(destination: SessionView(for: session))
                         {
                             SessionCard(for: session)
                         }
@@ -49,7 +52,6 @@ internal struct CollectionSection : View
             }
             .frame(height: 280)
         }
-        
     }
     
     internal init(collectionDetails: SpecialCollection)

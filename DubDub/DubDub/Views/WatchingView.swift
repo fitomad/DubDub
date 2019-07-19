@@ -15,7 +15,7 @@ internal struct WatchingView : View
         Text("Tendrás que esperar a próximos artículos para ver qué ocurre aquí")
             .font(.title)
             .lineLimit(nil)
-            .lineSpacing(7)
+            .lineSpacing(8)
             .padding([.leading, .trailing], 32)
     }
 }

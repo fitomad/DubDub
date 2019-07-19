@@ -16,6 +16,7 @@ internal struct SessionView : View
     ///
     @ObjectBinding private var imageLoader: ImageLoader
     
+    ///
     private var session: Session
 
     var body: some View
@@ -70,8 +71,6 @@ internal struct SessionView : View
             self.imageLoader.requestImage()
         }
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
-    
-        
     }
 
     /**

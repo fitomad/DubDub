@@ -39,6 +39,10 @@
 		91CF70E522C549FD00C4A92D /* DubDubKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 91CF70E322C549FD00C4A92D /* DubDubKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		91CF70E822C549FE00C4A92D /* DubDubKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91CF70E122C549FD00C4A92D /* DubDubKit.framework */; };
 		91CF70E922C549FE00C4A92D /* DubDubKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 91CF70E122C549FD00C4A92D /* DubDubKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		91CFEE5C22CD4CD3003A49E4 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91CFEE5B22CD4CD3003A49E4 /* CoreData.framework */; };
+		91E8C56822CD4EE000DA8755 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91E8C56722CD4EE000DA8755 /* CloudKit.framework */; };
+		91F54A0822E0697800C8ABFC /* DubDubDatabase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91F54A0622E0697800C8ABFC /* DubDubDatabase.xcdatamodeld */; };
+		91F54A0A22E080B200C8ABFC /* WebBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F54A0922E080B200C8ABFC /* WebBrowser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +128,11 @@
 		91CF70E122C549FD00C4A92D /* DubDubKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DubDubKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91CF70E322C549FD00C4A92D /* DubDubKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DubDubKit.h; sourceTree = "<group>"; };
 		91CF70E422C549FD00C4A92D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		91CFEE5B22CD4CD3003A49E4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		91E8C56622CD4ED000DA8755 /* DubDub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DubDub.entitlements; sourceTree = "<group>"; };
+		91E8C56722CD4EE000DA8755 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		91F54A0722E0697800C8ABFC /* DubDubDatabase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DubDubDatabase.xcdatamodel; sourceTree = "<group>"; };
+		91F54A0922E080B200C8ABFC /* WebBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebBrowser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +147,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91E8C56822CD4EE000DA8755 /* CloudKit.framework in Frameworks */,
 				91AD59FA22C6745900FB1E80 /* CoreWWDC.framework in Frameworks */,
 				91CF70E822C549FE00C4A92D /* DubDubKit.framework in Frameworks */,
 			);
@@ -148,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91AD5A1422C6819900FB1E80 /* CoreWWDC.framework in Frameworks */,
+				91CFEE5C22CD4CD3003A49E4 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +208,8 @@
 		91AD5A1322C6819900FB1E80 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				91E8C56722CD4EE000DA8755 /* CloudKit.framework */,
+				91CFEE5B22CD4CD3003A49E4 /* CoreData.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -225,6 +238,7 @@
 		91CF70BC22C5457400C4A92D /* DubDub */ = {
 			isa = PBXGroup;
 			children = (
+				91E8C56622CD4ED000DA8755 /* DubDub.entitlements */,
 				91CF70CB22C5457600C4A92D /* Info.plist */,
 				91CF70BD22C5457400C4A92D /* AppDelegate.swift */,
 				91CF70BF22C5457400C4A92D /* SceneDelegate.swift */,
@@ -273,6 +287,7 @@
 			children = (
 				91CF70D622C5473E00C4A92D /* CollectionSection.swift */,
 				91CF70D822C5482900C4A92D /* SessionCard.swift */,
+				91F54A0922E080B200C8ABFC /* WebBrowser.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -280,12 +295,21 @@
 		91CF70E222C549FD00C4A92D /* DubDubKit */ = {
 			isa = PBXGroup;
 			children = (
+				91CFEE5A22CD4C55003A49E4 /* Model */,
 				91CF70E422C549FD00C4A92D /* Info.plist */,
 				91CF70E322C549FD00C4A92D /* DubDubKit.h */,
 				91AD5A1022C67F8800FB1E80 /* Extensions */,
 				91AD59E922C6737C00FB1E80 /* ImageLoader.swift */,
 			);
 			path = DubDubKit;
+			sourceTree = "<group>";
+		};
+		91CFEE5A22CD4C55003A49E4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				91F54A0622E0697800C8ABFC /* DubDubDatabase.xcdatamodeld */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -468,6 +492,7 @@
 				91CF70C222C5457400C4A92D /* LaunchView.swift in Sources */,
 				91AD5A0A22C679B900FB1E80 /* FavoritesView.swift in Sources */,
 				91AD5A0F22C67A9E00FB1E80 /* AllSessionsView.swift in Sources */,
+				91F54A0A22E080B200C8ABFC /* WebBrowser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +502,7 @@
 			files = (
 				91AD59EC22C6737C00FB1E80 /* ImageLoader.swift in Sources */,
 				9157A41E22C7EA6F00303F55 /* Session+Identifiable.swift in Sources */,
+				91F54A0822E0697800C8ABFC /* DubDubDatabase.xcdatamodeld in Sources */,
 				91AD5A1222C67FA600FB1E80 /* SpecialCollection+Identifiable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -689,6 +715,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DubDub/DubDub.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "DubDub/Preview\\ Content";
 				DEVELOPMENT_TEAM = KQUX9WVW3M;
@@ -710,6 +737,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DubDub/DubDub.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "DubDub/Preview\\ Content";
 				DEVELOPMENT_TEAM = KQUX9WVW3M;
@@ -823,6 +851,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		91F54A0622E0697800C8ABFC /* DubDubDatabase.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				91F54A0722E0697800C8ABFC /* DubDubDatabase.xcdatamodel */,
+			);
+			currentVersion = 91F54A0722E0697800C8ABFC /* DubDubDatabase.xcdatamodel */;
+			path = DubDubDatabase.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 91CF70B222C5457400C4A92D /* Project object */;
 }

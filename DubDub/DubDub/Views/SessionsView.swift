@@ -22,36 +22,55 @@ internal struct SessionsView : View
         {
             List
             {
-                NavigationButton(destination: FavoritesView()) {
+                NavigationLink(destination: FavoritesView()) {
                     Text("Favoritos")
                         .fontWeight(.semibold)
                         .foregroundColor(.accentColor)
                 }
-                .padding(EdgeInsets(top: 12, leading: 24, bottom: 12, trailing: 24))
+                .padding(EdgeInsets(top: 12.0, leading: 24.0, bottom: 12.0, trailing: 24.0))
 
-                NavigationButton(destination: WatchingView()) {
+                NavigationLink(destination: WatchingView()) {
                     Text("Continuar viendo")
                         .fontWeight(.semibold)
                         .foregroundColor(.accentColor)
                 }
                 .padding(EdgeInsets(top: 12, leading: 24, bottom: 12, trailing: 24))
                 
-                NavigationButton(destination: AllSessionsView()) {
+                NavigationLink(destination: AllSessionsView()) {
                     Text("Todos los vídeos")
                         .fontWeight(.semibold)
                         .foregroundColor(.accentColor)
                 }
                 .padding(EdgeInsets(top: 12, leading: 24, bottom: 12, trailing: 24))
                 
-                // Colecciones especiales
-                ForEach(self.collectionList.collections) { collection in
-                    CollectionSection(collectionDetails: collection)
+                if self.collectionList.collections.isEmpty
+                {
+                    // La colección está vacía.
+                    // Mostramos un EmptySpace
+                    Text("Ahora mismo no se pueden recuperar las colecciones de sesiones")
+                        .font(.title)
+                        .foregroundColor(.secondary)
+                        .lineLimit(nil)
+                        .lineSpacing(8)
+                        .padding(24)
                 }
-                .listRowInsets(EdgeInsets())
+                else
+                {
+                    // Colecciones especiales
+                    ForEach(self.collectionList.collections) { collection in
+                        CollectionSection(collectionDetails: collection)
+                    }
+                    .listRowInsets(EdgeInsets())
+                }
+                
             }
             .navigationBarTitle(Text("Sesiones"))
+            .navigationBarItems(trailing:
+                NavigationLink(destination: FavoritesView()) {
+                    Image(systemName: "globe")
+                }
+            )
         }
-        
     }
 }
 
