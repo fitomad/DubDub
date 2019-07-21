@@ -14,6 +14,9 @@ import CoreWWDC
 internal struct SessionsView : View
 {
     ///
+    @State private var showNavigatorView = false
+    
+    ///
     @ObjectBinding private var collectionList = CollectionsViewModel()
 
     var body: some View
@@ -66,11 +69,19 @@ internal struct SessionsView : View
             }
             .navigationBarTitle(Text("Sesiones"))
             .navigationBarItems(trailing:
-                NavigationLink(destination: FavoritesView()) {
-                    Image(systemName: "globe")
+                Button(action: self.handleNavigatorButtonTap) {
+                   Image(systemName: "globe")
                 }
             )
         }
+        .sheet(isPresented: $showNavigatorView) {
+            WebBrowser()
+        }
+    }
+    
+    private func handleNavigatorButtonTap() -> Void
+    {
+        self.showNavigatorView.toggle()
     }
 }
 

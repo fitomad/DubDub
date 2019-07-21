@@ -69,6 +69,19 @@ public class ImageLoader: BindableObject
     public func requestImage() -> Void
     {
         let imageTask = URLSession.shared.dataTask(with: self.imageURL) { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+            guard let data = data,
+                  let response = response as? HTTPURLResponse,
+                  response.statusCode == 200
+            else
+            {
+                DispatchQueue.main.async
+                {
+                    self.imageData = nil
+                }
+                
+                return
+            }
+            
             DispatchQueue.main.async
             {
                 self.imageData = data

@@ -9,23 +9,62 @@
 import WebKit
 import SwiftUI
 
-internal struct WebBrowser: UIViewRepresentable
+internal final class WebBrowser: NSObject, UIViewRepresentable
 {
+    /**
+     
+    */
     internal func makeUIView(context: Context) -> WKWebView
     {
-        return WKWebView(frame: .zero)
+        let webView = WKWebView(frame: .zero)
+        webView.navigationDelegate = self
+        
+        return webView
     }
     
+    /**
+     
+    */
     internal func updateUIView(_ webView: WKWebView, context: Context) -> Void
     {
         guard let wwdcURL = URL(string: "https://developer.apple.com/wwdc19/") else
         {
             return
         }
-        
+                
         let wwdcRequest = URLRequest(url: wwdcURL)
         
         webView.load(wwdcRequest)
+    }
+    
+    /**
+     
+     
+    */
+    private func loadErrorPage(in webView: WKWebView) -> Void
+    {
+        guard let htmlURL = Bundle.main.url(forResource: "HTMLError", withExtension: "html"),
+              let htmlData = try? Data(contentsOf: htmlURL),
+              let htmlString = String(data: htmlData, encoding: .utf8)
+        else
+        {
+            return
+        }
+        
+        webView.loadHTMLString(htmlString, baseURL: nil)
+    }
+}
+
+extension WebBrowser: WKNavigationDelegate
+{
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error)
+    {
+        self.loadErrorPage(in: webView)
+    }
+    
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error)
+    {
+        self.loadErrorPage(in: webView)
     }
 }
 
