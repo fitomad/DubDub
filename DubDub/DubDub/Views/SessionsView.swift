@@ -76,6 +76,7 @@ internal struct SessionsView : View
         }
         .sheet(isPresented: $showNavigatorView) {
             WebBrowser()
+                .edgesIgnoringSafeArea([ .bottom ])
         }
     }
     
