@@ -35,7 +35,7 @@ internal class CollectionsViewModel: BindableObject
     public init()
     {
         self.collections = []
-        self.fetchCollections()
+        //self.fetchCollections()
     }
 
     //

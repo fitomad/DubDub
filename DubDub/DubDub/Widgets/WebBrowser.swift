@@ -57,11 +57,13 @@ internal final class WebBrowser: NSObject, UIViewRepresentable
 
 extension WebBrowser: WKNavigationDelegate
 {
+    // Fallo durante la carga
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error)
     {
         self.loadErrorPage(in: webView)
     }
     
+    // Fallo al intentar cargar
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error)
     {
         self.loadErrorPage(in: webView)

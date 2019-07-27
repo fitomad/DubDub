@@ -73,6 +73,9 @@ internal struct SessionsView : View
                    Image(systemName: "globe")
                 }
             )
+            .onAppear() {
+                  self.collectionList.fetchCollections()
+            }
         }
         .sheet(isPresented: $showNavigatorView) {
             WebBrowser()
