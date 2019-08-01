@@ -14,7 +14,8 @@ import DubDubKit
 internal struct CollectionSection : View
 {
     ///
-    @ObjectBinding private var collectionSessions: CollectionViewModel
+    @ObservedObject private var collectionSessions: CollectionViewModel
+    
     ///
     internal var collectionDetails: SpecialCollection
 
@@ -44,6 +45,7 @@ internal struct CollectionSection : View
                         {
                             SessionCard(for: session)
                         }
+                        .tag(session.title)
                     }
     
                     Spacer()

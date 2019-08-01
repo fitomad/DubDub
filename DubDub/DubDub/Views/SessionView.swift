@@ -14,7 +14,7 @@ import CoreWWDC
 internal struct SessionView : View
 {
     ///
-    @ObjectBinding private var imageLoader: ImageLoader
+    @ObservedObject private var imageLoader: ImageLoader
     
     ///
     private var session: Session

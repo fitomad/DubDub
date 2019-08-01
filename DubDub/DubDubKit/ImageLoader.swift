@@ -16,7 +16,7 @@ import SwiftUI
 import Combine
 import Foundation
 
-public class ImageLoader: BindableObject
+public class ImageLoader: ObservableObject
 {
     ///
     private var imageURL: URL
@@ -26,7 +26,7 @@ public class ImageLoader: BindableObject
     {
         willSet
         {
-            self.willChange.send()
+            self.objectWillChange.send()
         }
     }
 
@@ -52,7 +52,7 @@ public class ImageLoader: BindableObject
     // MARK: - Bindable Object Protocol -
 
     /// Informamos de los cambios a la vista.
-    public var willChange = PassthroughSubject<Void, Never>()
+    public var objectWillChange = PassthroughSubject<Void, Never>()
 
     /**
 

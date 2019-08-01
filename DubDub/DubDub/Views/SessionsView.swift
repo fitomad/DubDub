@@ -17,7 +17,7 @@ internal struct SessionsView : View
     @State private var showNavigatorView = false
     
     ///
-    @ObjectBinding private var collectionList = CollectionsViewModel()
+    @ObservedObject private var collectionList = CollectionsViewModel()
 
     var body: some View
     {
@@ -31,6 +31,7 @@ internal struct SessionsView : View
                         .foregroundColor(.accentColor)
                 }
                 .padding(EdgeInsets(top: 12.0, leading: 24.0, bottom: 12.0, trailing: 24.0))
+                .tag("favoritos")
 
                 NavigationLink(destination: WatchingView()) {
                     Text("Continuar viendo")
@@ -38,6 +39,7 @@ internal struct SessionsView : View
                         .foregroundColor(.accentColor)
                 }
                 .padding(EdgeInsets(top: 12, leading: 24, bottom: 12, trailing: 24))
+                .tag("watching")
                 
                 NavigationLink(destination: AllSessionsView()) {
                     Text("Todos los vídeos")
@@ -45,6 +47,7 @@ internal struct SessionsView : View
                         .foregroundColor(.accentColor)
                 }
                 .padding(EdgeInsets(top: 12, leading: 24, bottom: 12, trailing: 24))
+                .tag("all")
                 
                 if self.collectionList.collections.isEmpty
                 {

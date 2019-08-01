@@ -13,21 +13,21 @@ import Foundation
 import CoreWWDC
 import DubDubKit
 
-internal class CollectionsViewModel: BindableObject
+internal class CollectionsViewModel: ObservableObject
 {
     /// Las colecciones disponibles en este momento.
     public private(set) var collections: [SpecialCollection]
     {
         willSet
         {
-            self.willChange.send()
+            self.objectWillChange.send()
         }
     }
 
     // MARK: - Bindable Object Protocol -
 
     /// Informamos de los cambios a la vista.
-    public var willChange = PassthroughSubject<Void, Never>()
+    public var objectWillChange = PassthroughSubject<Void, Never>()
 
     /**
 

@@ -6,7 +6,6 @@
 //  Copyright © 2019 Adolfo Vera Blasco. All rights reserved.
 //
 
-import SwiftUI
 import Foundation
 
 import CoreWWDC

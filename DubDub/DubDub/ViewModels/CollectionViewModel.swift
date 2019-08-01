@@ -15,21 +15,21 @@ import DubDubKit
 
 import Foundation
 
-internal class CollectionViewModel: BindableObject
+internal class CollectionViewModel: ObservableObject
 {
     /// Las colecciones disponibles en este momento.
     public private(set) var sessions: [Session]
     {
         willSet
         {
-            self.willChange.send()
+            self.objectWillChange.send()
         }
     }
     
     // MARK: - Bindable Object Protocol -
     
     /// Informamos de los cambios a la vista.
-    public var willChange = PassthroughSubject<Void, Never>()
+    public var objectWillChange = PassthroughSubject<Void, Never>()
 
     /**
      

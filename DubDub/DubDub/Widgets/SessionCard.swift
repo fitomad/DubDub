@@ -14,7 +14,7 @@ import CoreWWDC
 internal struct SessionCard : View
 {
     ///
-    @ObjectBinding private var imageLoader: ImageLoader
+    @ObservedObject private var imageLoader: ImageLoader
     ///
     internal var session: Session
 
@@ -38,6 +38,7 @@ internal struct SessionCard : View
             Text(session.title)
                 .fontWeight(.bold)
                 .foregroundColor(.primary)
+                .lineLimit(1)
                 .padding(EdgeInsets(top: 0, leading: 8, bottom: 4, trailing: 8))
         }
         .padding(8)
