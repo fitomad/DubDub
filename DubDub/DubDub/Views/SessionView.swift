@@ -21,56 +21,59 @@ internal struct SessionView : View
 
     var body: some View
     {
-        VStack(alignment: .leading)
+        ScrollView([ .vertical ], showsIndicators: false)
         {
-            Image(uiImage: self.imageLoader.image ?? UIImage(named: "EmptyImage")!)
-                .resizable()
+            VStack(alignment: .leading)
+            {
+                Image(uiImage: self.imageLoader.image ?? UIImage(named: "EmptyImage")!)
+                    .resizable()
+                    .cornerRadius(6)
+                    .shadow(radius: 8)
+                    .frame(height: 200)
+                    .padding(.bottom, 24)
+
+                Text(self.session.platforms.map({ $0.rawValue }).joined(separator: ", "))
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
+     
+                Text(session.title)
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundColor(.primary)
+                    .lineLimit(3)
+                    .padding([.top, .bottom], 12)
+                
+                Button(action: self.handleFavoriteButtonTap) {
+                    Text("Marcar como favorita")
+                        .font(.callout)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                }
+                .frame(height: 50)
+                .background(Color.accentColor)
                 .cornerRadius(6)
-                .shadow(radius: 8)
-                .frame(height: 200)
-                .padding(.bottom, 24)
+                .shadow(radius: 4)
+                .padding([.top, .bottom], 24)
 
-            Text(self.session.platforms.map({ $0.rawValue }).joined(separator: ", "))
-                .font(.footnote)
-                .foregroundColor(.secondary)
- 
-            Text(session.title)
-                .font(.title)
-                .fontWeight(.bold)
-                .foregroundColor(.primary)
-                .lineLimit(3)
-                .padding([.top, .bottom], 12)
-            
-            Button(action: self.handleFavoriteButtonTap) {
-                Text("Marcar como favorita")
-                    .font(.callout)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.white)
-                    .frame(minWidth: 0, maxWidth: .infinity)
+                Text("Resumen")
+                    .font(.system(size: 22))
+                    .fontWeight(.bold)
+                
+                Text(session.overview)
+                    .font(.body)
+                    .lineLimit(nil)
+                    .lineSpacing(7)
+                    .padding(.top, 12)
             }
-            .frame(height: 50)
-            .background(Color.accentColor)
-            .cornerRadius(6)
-            .shadow(radius: 4)
-            .padding([.top, .bottom], 24)
 
-            Text("Resumen")
-                .font(.system(size: 22))
-                .fontWeight(.bold)
-            
-            Text(session.overview)
-                .font(.body)
-                .lineLimit(nil)
-                .lineSpacing(7)
-                .padding(.top, 12)
-            
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
         }
         .padding([.leading, .trailing], 24)
         .onAppear()
         {
             self.imageLoader.requestImage()
         }
-        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
     }
 
     /**

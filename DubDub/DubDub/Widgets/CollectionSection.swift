@@ -45,7 +45,6 @@ internal struct CollectionSection : View
                         {
                             SessionCard(for: session)
                         }
-                        .tag(session.title)
                     }
     
                     Spacer()

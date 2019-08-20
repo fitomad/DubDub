@@ -23,31 +23,67 @@ internal struct SessionsView : View
     {
         NavigationView
         {
-            List
+            ScrollView([ .vertical ], showsIndicators: false)
             {
-                NavigationLink(destination: FavoritesView()) {
-                    Text("Favoritos")
-                        .fontWeight(.semibold)
-                        .foregroundColor(.accentColor)
-                }
-                .padding(EdgeInsets(top: 12.0, leading: 24.0, bottom: 12.0, trailing: 24.0))
-                .tag("favoritos")
+                VStack(alignment: .leading)
+                {
+                    Divider()
+                        .padding(.leading, 24)
+                    
+                    NavigationLink(destination: FavoritesView()) {
+                        HStack(alignment: .center)
+                        {
+                            Text("Favoritos")
+                                .fontWeight(.semibold)
+                                .foregroundColor(.accentColor)
+                            
+                            Spacer()
+                            
+                            Image(systemName: "chevron.right")
+                        }
+                    }
+                    .padding(EdgeInsets(top: 12.0, leading: 40.0, bottom: 12.0, trailing: 40.0))
+                    .tag("favoritos")
+                    
+                    Divider()
+                        .padding(.leading, 24)
 
-                NavigationLink(destination: WatchingView()) {
-                    Text("Continuar viendo")
-                        .fontWeight(.semibold)
-                        .foregroundColor(.accentColor)
+                    NavigationLink(destination: WatchingView()) {
+                        HStack(alignment: .center)
+                        {
+                            Text("Continuar viendo")
+                                .fontWeight(.semibold)
+                                .foregroundColor(.accentColor)
+                            
+                            Spacer()
+                            
+                            Image(systemName: "chevron.right")
+                        }
+                    }
+                    .padding(EdgeInsets(top: 12.0, leading: 40.0, bottom: 12.0, trailing: 40.0))
+                    .tag("watching")
+                    
+                    Divider()
+                        .padding(.leading, 24)
+                    
+                    NavigationLink(destination: AllSessionsView()) {
+                        HStack(alignment: .center)
+                        {
+                            Text("Todos los vídeos")
+                                .fontWeight(.semibold)
+                                .foregroundColor(.accentColor)
+                            
+                            Spacer()
+                            
+                            Image(systemName: "chevron.right")
+                        }
+                    }
+                    .padding(EdgeInsets(top: 12.0, leading: 40.0, bottom: 12.0, trailing: 40.0))
+                    .tag("all")
+                    
+                    Divider()
+                        .padding(.leading, 24)
                 }
-                .padding(EdgeInsets(top: 12, leading: 24, bottom: 12, trailing: 24))
-                .tag("watching")
-                
-                NavigationLink(destination: AllSessionsView()) {
-                    Text("Todos los vídeos")
-                        .fontWeight(.semibold)
-                        .foregroundColor(.accentColor)
-                }
-                .padding(EdgeInsets(top: 12, leading: 24, bottom: 12, trailing: 24))
-                .tag("all")
                 
                 if self.collectionList.collections.isEmpty
                 {
@@ -68,8 +104,8 @@ internal struct SessionsView : View
                     }
                     .listRowInsets(EdgeInsets())
                 }
-                
             }
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
             .navigationBarTitle(Text("Sesiones"))
             .navigationBarItems(trailing:
                 Button(action: self.handleNavigatorButtonTap) {
