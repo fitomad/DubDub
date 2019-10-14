@@ -21,6 +21,12 @@ public class DataManager
     
     ///
     public static let shared = DataManager()
+
+    ///
+    public managedObjectContext: NSManagedObjectContext?
+    {
+        return self.storeContainer?.viewContext
+    }
     
     private var applicationDataPath: URL
     {

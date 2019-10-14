@@ -15,6 +15,27 @@ public extension DataManager
     /**
      
     */
+    func existsFavoriteSesssion(named name: String) -> Bool
+    {
+        guard let container = self.storeContainer else
+        {
+            return false
+        }
+        
+        let request: NSFetchRequest<Favorites> = Favorites.fetchRequest()        
+        request.predicate = NSPredicate(format: "name = %@", argumentArray: [ name ])
+        
+        if let results = try? container.viewContext.count(for: request), results > 0
+        {
+            return true
+        }
+        
+        return false
+    }
+
+    /**
+     
+    */
     func fetchFavoriteSesssion(named name: String) -> Favorites?
     {
         guard let container = self.storeContainer else

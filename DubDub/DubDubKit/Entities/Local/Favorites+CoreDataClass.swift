@@ -11,6 +11,16 @@ import Foundation
 import CoreData
 
 @objc(Favorites)
-public class Favorites: NSManagedObject {
+public class Favorites: NSManagedObject 
+{
+    ///
+    public var formattedCreationDate: String
+    {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
 
+        let creationDate = Date(timeIntervalSinceReferenceDate: self.createdAt)
+
+        return formatter.string(from: creationDate)
+    }
 }

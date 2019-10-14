@@ -7,16 +7,21 @@
 //
 
 import SwiftUI
+import Foundation
+
+import DubDubKit
 
 internal struct FavoritesView : View
 {
-    var body: some View
+    ////
+    @FetchRequest(fetchRequest: DataManager.shared.fetchRequestFavoriteSessions()) var favoriteSessions: FetchedResults<Favorites>
+
+    ///
+    internal var body: some View
     {
-        Text("Tendrás que esperar a próximos artículos para ver qué ocurre aquí")
-            .font(.title)
-            .lineLimit(nil)
-            .lineSpacing(8)
-            .padding([.leading, .trailing], 32)
+        List(self.favoriteSessions) { favoriteSession in 
+        
+        }        
     }
 }
 

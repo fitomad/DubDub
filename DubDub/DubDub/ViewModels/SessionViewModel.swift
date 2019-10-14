@@ -10,9 +10,30 @@ import SwiftUI
 import Combine
 import Foundation
 
+import DubDubKit
+
 internal class SessionViewModel: ObservableObject
-{
-    
+{    
     ///
-    internal var objectWillChange = PassthroughSubject<Void, Never>()
+    @Published internal var isFavorite: Bool
+
+    /**
+
+    */
+    internal init(forSession name: String)
+    {
+        self.isFavorite = DataManager.shared.existsFavoriteSesssion(named: name)
+
+        $isFavorite
+            .sink(receiveValue: { favorited: Bool -> Void in 
+                if favorited
+                {
+                    DataManager.shared.insertFavoriteSession(named: name)
+                }
+                else
+                {
+                    DataManager.shared.deleteFavoriteSession(named: name)
+                }
+            })
+    }
 }

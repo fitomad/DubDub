@@ -15,6 +15,8 @@ internal struct SessionView : View
 {
     ///
     @ObservedObject private var imageLoader: ImageLoader
+    ///
+    @ObservedObject private var sessionModel: SessionViewModel
     
     ///
     private var session: Session
@@ -44,14 +46,14 @@ internal struct SessionView : View
                     .padding([.top, .bottom], 12)
                 
                 Button(action: self.handleFavoriteButtonTap) {
-                    Text("Marcar como favorita")
+                    Text(self.sessionModel.isFavorite ? "Quitar de Favoritos" : "Marcar como favorita")
                         .font(.callout)
                         .fontWeight(.semibold)
-                        .foregroundColor(.white)
+                        .foregroundColor(self.sessionModel.isFavorite ? .accentColor : .white)
                         .frame(minWidth: 0, maxWidth: .infinity)
                 }
                 .frame(height: 50)
-                .background(Color.accentColor)
+                .background(self.sessionModel.isFavorite ? Color.white : Color.accentColor)
                 .cornerRadius(6)
                 .shadow(radius: 4)
                 .padding([.top, .bottom], 24)
@@ -82,12 +84,18 @@ internal struct SessionView : View
     internal init(for session: Session)
     {
         self.session = session
+        // 
         self.imageLoader = ImageLoader(from: session.imageURL)
+
+        self.sessionModel = SessionViewModel(forSession: session.title)
     }
     
+    /**
+
+    */
     private func handleFavoriteButtonTap() -> Void
     {
-        
+        self.sessionModel.isFavorite.toggle()
     }
 }
 

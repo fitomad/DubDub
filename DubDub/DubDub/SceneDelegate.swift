@@ -9,6 +9,8 @@
 import UIKit
 import SwiftUI
 
+import DubDubKit
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -22,7 +24,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use a UIHostingController as window root view controller
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: SessionsView())
+
+            let sessionView = SessionsView()
+                                    
+            if let managedObjectContext = DataManager.shared.managedObjectContext
+            {
+                sessionView.environment(\.managedObjectContext, managedObjectContext) 
+            }                                  
+                            
+            window.rootViewController = UIHostingController(rootView: sessionView)
             self.window = window
             window.makeKeyAndVisible()
         }
