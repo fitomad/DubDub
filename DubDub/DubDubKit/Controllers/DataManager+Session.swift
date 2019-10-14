@@ -22,7 +22,7 @@ public extension DataManager
             return false
         }
         
-        let request: NSFetchRequest<Favorites> = Favorites.fetchRequest()        
+        let request: NSFetchRequest<Favorite> = Favorite.fetchRequest()
         request.predicate = NSPredicate(format: "name = %@", argumentArray: [ name ])
         
         if let results = try? container.viewContext.count(for: request), results > 0
@@ -36,14 +36,14 @@ public extension DataManager
     /**
      
     */
-    func fetchFavoriteSesssion(named name: String) -> Favorites?
+    func fetchFavoriteSesssion(named name: String) -> Favorite?
     {
         guard let container = self.storeContainer else
         {
             return nil
         }
         
-        let request: NSFetchRequest<Favorites> = Favorites.fetchRequest()
+        let request: NSFetchRequest<Favorite> = Favorite.fetchRequest()
         
         request.predicate = NSPredicate(format: "name = %@", argumentArray: [ name ])
         
@@ -58,9 +58,9 @@ public extension DataManager
     /**
      
     */
-    func fetchRequestFavoriteSessions() -> NSFetchRequest<Favorites>
+    func fetchRequestFavoriteSessions() -> NSFetchRequest<Favorite>
     {
-        let request: NSFetchRequest<Favorites> = Favorites.fetchRequest()
+        let request: NSFetchRequest<Favorite> = Favorite.fetchRequest()
         
         let sortDate = NSSortDescriptor(key: "createdAt", ascending: false)
         let sortName = NSSortDescriptor(key: "name", ascending: true)
@@ -73,16 +73,17 @@ public extension DataManager
     /**
      
     */
-    func insertFavoriteSession(named name: String) -> Void
+    func insertFavoriteSession(named name: String, backdrop imageURL: URL) -> Void
     {
         guard let container = self.storeContainer else
         {
             return
         }
         
-        let favoriteSession = NSEntityDescription.insertNewObject(forEntityName: "Favorites", into: container.viewContext) as! Favorites
+        let favoriteSession = NSEntityDescription.insertNewObject(forEntityName: "Favorite", into: container.viewContext) as! Favorite
         
         favoriteSession.name = name
+        favoriteSession.backdrop = imageURL
         favoriteSession.createdAt = Date().timeIntervalSinceReferenceDate
         
         self.saveContext()

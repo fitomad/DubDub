@@ -19,7 +19,7 @@ import Foundation
 public class ImageLoader: ObservableObject
 {
     ///
-    private var imageURL: URL
+    private var imageURL: URL?
 
     /// Las colecciones disponibles en este momento.
     public private(set) var imageData: Data?
@@ -57,7 +57,7 @@ public class ImageLoader: ObservableObject
     /**
 
     */
-    public init(from url: URL)
+    public init(from url: URL?)
     {
         self.imageURL = url
     }
@@ -68,7 +68,13 @@ public class ImageLoader: ObservableObject
 
     public func requestImage() -> Void
     {
-        let imageTask = URLSession.shared.dataTask(with: self.imageURL) { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+        guard let imageURL = self.imageURL else
+        {
+            self.imageData = nil
+            return
+        }
+        
+        let imageTask = URLSession.shared.dataTask(with: imageURL) { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             guard let data = data,
                   let response = response as? HTTPURLResponse,
                   response.statusCode == 200

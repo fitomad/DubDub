@@ -17,15 +17,15 @@ public class DataManager
     private let databaseName: String
 
     ///
-    internal var storeContainer: NSPersistentCloudKitContainer?
+    internal var storeContainer: NSPersistentCloudKitContainer!
     
     ///
     public static let shared = DataManager()
 
     ///
-    public managedObjectContext: NSManagedObjectContext?
+    public var managedObjectContext: NSManagedObjectContext
     {
-        return self.storeContainer?.viewContext
+        return self.storeContainer.viewContext
     }
     
     private var applicationDataPath: URL
@@ -86,7 +86,7 @@ public class DataManager
     */
     internal func saveContext() -> Void
     {
-        guard let container = self.storeContainer, container.viewContext.hasChanges else
+        guard self.storeContainer.viewContext.hasChanges else
         {
             return
         }
@@ -94,7 +94,7 @@ public class DataManager
         do
         {
             // Guardamos en Core Data...
-            try container.viewContext.save()
+            try self.storeContainer.viewContext.save()
         }
         catch
         {

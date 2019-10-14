@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		913D27582354F5AE00C396E5 /* FavoriteCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913D27572354F5AE00C396E5 /* FavoriteCellView.swift */; };
+		913D275B2354F91000C396E5 /* Favorite+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913D27592354F91000C396E5 /* Favorite+CoreDataClass.swift */; };
+		913D275C2354F91000C396E5 /* Favorite+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913D275A2354F91000C396E5 /* Favorite+CoreDataProperties.swift */; };
+		913D275D2354FF6000C396E5 /* DubDubDatabase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91F54A0622E0697800C8ABFC /* DubDubDatabase.xcdatamodeld */; };
 		9157A41822C7BE0E00303F55 /* WWDCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9157A41722C7BE0E00303F55 /* WWDCClient.swift */; };
 		9157A41A22C7C4D200303F55 /* WWDCError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9157A41922C7C4D200303F55 /* WWDCError.swift */; };
 		9157A41C22C7E87B00303F55 /* CollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9157A41B22C7E87B00303F55 /* CollectionViewModel.swift */; };
@@ -44,8 +48,6 @@
 		91CF70E822C549FE00C4A92D /* DubDubKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91CF70E122C549FD00C4A92D /* DubDubKit.framework */; };
 		91CF70E922C549FE00C4A92D /* DubDubKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 91CF70E122C549FD00C4A92D /* DubDubKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		91CFEE5C22CD4CD3003A49E4 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91CFEE5B22CD4CD3003A49E4 /* CoreData.framework */; };
-		91DDE3AB2353253500F4A18B /* Favorites+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DDE3A92353253500F4A18B /* Favorites+CoreDataClass.swift */; };
-		91DDE3AC2353253500F4A18B /* Favorites+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DDE3AA2353253500F4A18B /* Favorites+CoreDataProperties.swift */; };
 		91DDE3AF2353263E00F4A18B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DDE3AE2353263E00F4A18B /* DataManager.swift */; };
 		91E8C56822CD4EE000DA8755 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91E8C56722CD4EE000DA8755 /* CloudKit.framework */; };
 		91F54A0822E0697800C8ABFC /* DubDubDatabase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91F54A0622E0697800C8ABFC /* DubDubDatabase.xcdatamodeld */; };
@@ -103,6 +105,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		913D27572354F5AE00C396E5 /* FavoriteCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteCellView.swift; sourceTree = "<group>"; };
+		913D27592354F91000C396E5 /* Favorite+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorite+CoreDataClass.swift"; sourceTree = "<group>"; };
+		913D275A2354F91000C396E5 /* Favorite+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorite+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9157A41722C7BE0E00303F55 /* WWDCClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WWDCClient.swift; sourceTree = "<group>"; };
 		9157A41922C7C4D200303F55 /* WWDCError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WWDCError.swift; sourceTree = "<group>"; };
 		9157A41B22C7E87B00303F55 /* CollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewModel.swift; sourceTree = "<group>"; };
@@ -140,8 +145,6 @@
 		91CF70E322C549FD00C4A92D /* DubDubKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DubDubKit.h; sourceTree = "<group>"; };
 		91CF70E422C549FD00C4A92D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		91CFEE5B22CD4CD3003A49E4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		91DDE3A92353253500F4A18B /* Favorites+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorites+CoreDataClass.swift"; sourceTree = "<group>"; };
-		91DDE3AA2353253500F4A18B /* Favorites+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorites+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		91DDE3AE2353263E00F4A18B /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		91E8C56622CD4ED000DA8755 /* DubDub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DubDub.entitlements; sourceTree = "<group>"; };
 		91E8C56722CD4EE000DA8755 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -302,6 +305,7 @@
 		91CF70D522C5471F00C4A92D /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
+				913D27572354F5AE00C396E5 /* FavoriteCellView.swift */,
 				91CF70D622C5473E00C4A92D /* CollectionSection.swift */,
 				91CF70D822C5482900C4A92D /* SessionCard.swift */,
 				91F54A0922E080B200C8ABFC /* WebBrowser.swift */,
@@ -342,8 +346,8 @@
 		91DDE3A4235323AE00F4A18B /* Local */ = {
 			isa = PBXGroup;
 			children = (
-				91DDE3A92353253500F4A18B /* Favorites+CoreDataClass.swift */,
-				91DDE3AA2353253500F4A18B /* Favorites+CoreDataProperties.swift */,
+				913D27592354F91000C396E5 /* Favorite+CoreDataClass.swift */,
+				913D275A2354F91000C396E5 /* Favorite+CoreDataProperties.swift */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -527,6 +531,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91AD193C235441B300D8C7C4 /* FavoritesViewModel.swift in Sources */,
+				913D275D2354FF6000C396E5 /* DubDubDatabase.xcdatamodeld in Sources */,
 				9157A41C22C7E87B00303F55 /* CollectionViewModel.swift in Sources */,
 				91AD5A0822C6773A00FB1E80 /* CollectionsViewModel.swift in Sources */,
 				91CF70DB22C549C600C4A92D /* SessionView.swift in Sources */,
@@ -538,6 +543,7 @@
 				91AD5A0D22C67A0500FB1E80 /* WatchingView.swift in Sources */,
 				91CF70C222C5457400C4A92D /* LaunchView.swift in Sources */,
 				91AD5A0A22C679B900FB1E80 /* FavoritesView.swift in Sources */,
+				913D27582354F5AE00C396E5 /* FavoriteCellView.swift in Sources */,
 				91AD193A23543F1600D8C7C4 /* SessionViewModel.swift in Sources */,
 				91AD5A0F22C67A9E00FB1E80 /* AllSessionsView.swift in Sources */,
 				91F54A0A22E080B200C8ABFC /* WebBrowser.swift in Sources */,
@@ -550,10 +556,10 @@
 			files = (
 				91B2A66823537CC800F92FDC /* DataManager+Session.swift in Sources */,
 				91AD59EC22C6737C00FB1E80 /* ImageLoader.swift in Sources */,
-				91DDE3AC2353253500F4A18B /* Favorites+CoreDataProperties.swift in Sources */,
-				91DDE3AB2353253500F4A18B /* Favorites+CoreDataClass.swift in Sources */,
 				91DDE3AF2353263E00F4A18B /* DataManager.swift in Sources */,
+				913D275B2354F91000C396E5 /* Favorite+CoreDataClass.swift in Sources */,
 				9157A41E22C7EA6F00303F55 /* Session+Identifiable.swift in Sources */,
+				913D275C2354F91000C396E5 /* Favorite+CoreDataProperties.swift in Sources */,
 				91F54A0822E0697800C8ABFC /* DubDubDatabase.xcdatamodeld in Sources */,
 				91AD5A1222C67FA600FB1E80 /* SpecialCollection+Identifiable.swift in Sources */,
 			);

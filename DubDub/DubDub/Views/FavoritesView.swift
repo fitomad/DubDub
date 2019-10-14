@@ -13,14 +13,16 @@ import DubDubKit
 
 internal struct FavoritesView : View
 {
+    @Environment(\.managedObjectContext) var managedObjectContext
     ////
-    @FetchRequest(fetchRequest: DataManager.shared.fetchRequestFavoriteSessions()) var favoriteSessions: FetchedResults<Favorites>
+    @FetchRequest(fetchRequest: DataManager.shared.fetchRequestFavoriteSessions()) var favoriteSessions: FetchedResults<Favorite>
 
     ///
     internal var body: some View
     {
         List(self.favoriteSessions) { favoriteSession in 
             FavoriteCellView(for: favoriteSession)
+                .padding([ .top, .bottom ], 8)
         }        
     }
 }

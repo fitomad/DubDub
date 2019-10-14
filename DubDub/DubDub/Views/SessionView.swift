@@ -55,7 +55,7 @@ internal struct SessionView : View
                 .frame(height: 50)
                 .background(self.sessionModel.isFavorite ? Color.white : Color.accentColor)
                 .cornerRadius(6)
-                .shadow(radius: 4)
+                .shadow(radius: self.sessionModel.isFavorite ? 0 : 4)
                 .padding([.top, .bottom], 24)
 
                 Text("Resumen")
@@ -86,8 +86,7 @@ internal struct SessionView : View
         self.session = session
         // 
         self.imageLoader = ImageLoader(from: session.imageURL)
-
-        self.sessionModel = SessionViewModel(forSession: session.title)
+        self.sessionModel = SessionViewModel(forSession: session)
     }
     
     /**

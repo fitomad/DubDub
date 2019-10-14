@@ -24,13 +24,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use a UIHostingController as window root view controller
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-
+            
             let sessionView = SessionsView()
-                                    
-            if let managedObjectContext = DataManager.shared.managedObjectContext
-            {
-                sessionView.environment(\.managedObjectContext, managedObjectContext) 
-            }                                  
+                .environment(\.managedObjectContext, DataManager.shared.managedObjectContext)
                             
             window.rootViewController = UIHostingController(rootView: sessionView)
             self.window = window

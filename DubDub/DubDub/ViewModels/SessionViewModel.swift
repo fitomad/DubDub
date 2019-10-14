@@ -11,6 +11,7 @@ import Combine
 import Foundation
 
 import DubDubKit
+import CoreWWDC
 
 internal class SessionViewModel: ObservableObject
 {    
@@ -20,19 +21,21 @@ internal class SessionViewModel: ObservableObject
     /**
 
     */
-    internal init(forSession name: String)
+    internal init(forSession session: Session)
     {
-        self.isFavorite = DataManager.shared.existsFavoriteSesssion(named: name)
-
+        self.isFavorite = DataManager.shared.existsFavoriteSesssion(named: session.title)
+        
         $isFavorite
-            .sink(receiveValue: { favorited: Bool -> Void in 
+            .dropFirst()
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: { (favorited: Bool) -> Void in 
                 if favorited
                 {
-                    DataManager.shared.insertFavoriteSession(named: name)
+                    DataManager.shared.insertFavoriteSession(named: session.title, backdrop: session.imageURL)
                 }
                 else
                 {
-                    DataManager.shared.deleteFavoriteSession(named: name)
+                    DataManager.shared.deleteFavoriteSession(named: session.title)
                 }
             })
     }
