@@ -20,7 +20,7 @@ internal struct FavoritesView : View
     internal var body: some View
     {
         List(self.favoriteSessions) { favoriteSession in 
-        
+            FavoriteCellView(for: favoriteSession)
         }        
     }
 }
