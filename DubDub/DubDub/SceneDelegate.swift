@@ -22,9 +22,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         // Use a UIHostingController as window root view controller
-        if let windowScene = scene as? UIWindowScene {
+        if let windowScene = scene as? UIWindowScene 
+        {
             let window = UIWindow(windowScene: windowScene)
             
+            // Variable de entorno para `managedObjectContext`
+            // Es necesario para luego usar `@FetchRequest` en
+            // las vistas.
             let sessionView = SessionsView()
                 .environment(\.managedObjectContext, DataManager.shared.managedObjectContext)
                             

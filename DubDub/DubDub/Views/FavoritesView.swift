@@ -13,10 +13,10 @@ import DubDubKit
 
 internal struct FavoritesView : View
 {
-    ////
+    //// Request donde se obtiene todas las sesiones marcadas como **favoritas** por el usuario
     @FetchRequest(fetchRequest: DataManager.shared.fetchRequestFavoriteSessions()) var favoriteSessions: FetchedResults<Favorite>
 
-    ///
+    /// Vista
     internal var body: some View
     {
         List(self.favoriteSessions) { favoriteSession in 

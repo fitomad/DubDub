@@ -15,19 +15,25 @@ import CoreWWDC
 
 internal class SessionViewModel: ObservableObject
 {    
-    ///
+    /// Si esta sesión está marcada como favorita o no
     @Published internal var isFavorite: Bool
 
     /**
+        Crea un *ViewModel* para una sesión
 
+        - Parameter session: La sesión que gestiona este *ViewModel*
     */
     internal init(forSession session: Session)
     {
+        // Recuperamos el estado actual de la sesión
         self.isFavorite = DataManager.shared.existsFavoriteSesssion(named: session.title)
         
         $isFavorite
+            // 1
             .dropFirst()
+            // 2
             .receive(on: RunLoop.main)
+            // 3
             .sink(receiveValue: { (favorited: Bool) -> Void in 
                 if favorited
                 {

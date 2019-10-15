@@ -56,7 +56,8 @@ public extension DataManager
     }
     
     /**
-     
+        Construye un `NSFetchRequest` que enlazará directamente
+        con la vista.
     */
     func fetchRequestFavoriteSessions() -> NSFetchRequest<Favorite>
     {

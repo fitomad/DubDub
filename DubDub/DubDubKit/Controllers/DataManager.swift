@@ -11,18 +11,19 @@ import Foundation
 
 public class DataManager
 {
-    ///
+    /// Nombre del modelo
     private let modelName: String
-    ///
+    /// Nombre del archivo de base de datos
     private let databaseName: String
 
-    ///
-    internal var storeContainer: NSPersistentCloudKitContainer!
-    
-    ///
+    /// Singleton
     public static let shared = DataManager()
 
-    ///
+    /// Contenedor. En este caso es el nuevo 
+    /// preparado para trabajar con `CloudKit`
+    internal var storeContainer: NSPersistentCloudKitContainer!
+    
+    /// Contexto del contenedor de datos
     public var managedObjectContext: NSManagedObjectContext
     {
         return self.storeContainer.viewContext
